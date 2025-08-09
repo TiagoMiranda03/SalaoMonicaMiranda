@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agenda - Mónica Miranda</title>
+    <link rel="stylesheet" href="/Css/css_index.css" />
+    <link rel="stylesheet" href="/Css/Css_Agenda.css"
+</head>
+<body>
+    <header>💇‍♀️ Salão de Beleza Mónica Miranda</header>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="agenda.html" class="active">Agenda</a>
+        <a href="servico.html">Serviços</a>
+        <a href="perfil.html">Perfil</a>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2 class="section-title">Agenda</h2>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <h3 id="monthYear"></h3>
+                    <div class="nav-buttons">
+                        <button id="prevMonth">◀ Anterior</button>
+                        <button id="nextMonth">Seguinte ▶</button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendarDays"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <div id="modalContent">
+            <span id="modalClose">&times;</span>
+            <h3>Marcações do dia</h3>
+            <ul id="eventList"></ul>
+        </div>
+    </div>
+
+    <script src="/JavaScript/Script_Agenda.js"></script>
+</body>
+</html>

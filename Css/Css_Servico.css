@@ -1,0 +1,39 @@
+/* Pequeno estilo extra para o formulário */
+        #addServiceForm {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 15px 0;
+            max-width: 100%;
+        }
+        #addServiceForm input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        #addServiceForm button {
+            background-color: #a64ca6;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #addServiceForm button:hover {
+            background-color: #903b90;
+        }
+        #btnAddService {
+            background-color: #a64ca6;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        #btnAddService:hover {
+            background-color: #903b90;
+        }

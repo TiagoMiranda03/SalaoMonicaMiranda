@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Serviços - Mónica Miranda</title>
+    <link rel="stylesheet" href="/Css/css_index.css" />
+    <link rel="stylesheet" href="/Css/Css_Servico.css">
+</head>
+<body>
+    <header>💇‍♀️ Salão de Beleza Mónica Miranda</header>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="servico.html" class="active">Serviços</a>
+        <a href="perfil.html">Perfil</a>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h2 class="section-title">Serviços Disponíveis</h2>
+            
+            <button id="btnAddService">➕ Adicionar Serviço</button>
+
+            <form id="addServiceForm" style="display:none;">
+                <input type="text" id="serviceName" placeholder="Nome do Serviço (ex: Corte de Cabelo)" required />
+                <input type="text" id="serviceEmoji" placeholder="Emoji (ex: 💇) - opcional" maxlength="2" />
+                <input type="number" id="servicePrice" placeholder="Preço (€)" min="0" step="0.01" required />
+                <button type="submit">Adicionar</button>
+            </form>
+
+            <div class="appointments" id="servicesList">
+                <div class="appointment-card">
+                    <h4>💇 Corte de Cabelo</h4>
+                    <p>Preço: 15€</p>
+                </div>
+                <div class="appointment-card">
+                    <h4>🎨 Coloração</h4>
+                    <p>Preço: 30€</p>
+                </div>
+                <div class="appointment-card">
+                    <h4>💅 Unhas de Gel</h4>
+                    <p>Preço: 20€</p>
+                </div>
+                <div class="appointment-card">
+                    <h4>💆 Penteado</h4>
+                    <p>Preço: 25€</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/JavaScript/Script_Servico.js"></script>
+</body>
+</html>
