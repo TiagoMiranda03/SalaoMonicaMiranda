@@ -1,0 +1,23 @@
+{
+  "name": "monica-miranda-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoMiranda03/SalaMonicaMiranda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TiagoMiranda03/SalaMonicaMiranda/issues"
+  },
+  "homepage": "https://github.com/TiagoMiranda03/SalaMonicaMiranda#readme",
+  "description": ""
+}
