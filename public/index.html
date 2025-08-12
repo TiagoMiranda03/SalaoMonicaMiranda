@@ -1,71 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mónica Miranda - Salão de Beleza</title>
-    <link rel="stylesheet" href="/Css/css_index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Mónica Miranda</title>
+    <link rel ="stylesheet" href="/Css/css_login.css">
 </head>
 <body>
-    <header>💇‍♀️ Salão de Beleza Mónica Miranda</header>
-    <nav>
-        <a href="#">Início</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="servico.html">Serviços</a>
-        <a href="perfil.html">Perfil</a>
-    </nav>
-
-    <div class="container">
-        <section>
-            <h2 class="section-title">Nova Marcação</h2>
-            <div class="card">
-                <div class="form-group">
-                    <label>Nome do Cliente</label>
-                    <input type="text" id="nome" placeholder="Ex: Ana Silva">
-                </div>
-                <div class="form-group">
-                    <label>Serviço</label>
-                    <select id="servico">
-                        <option>Seleciona uma opção</option>
-                        <option>Corte de Cabelo</option>
-                        <option>Penteado</option>
-                        <option>Coloração</option>
-                        <option>Unhas de Gel</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Data</label>
-                    <input type="date" id="data">
-                </div>
-                <div class="form-group">
-                    <label>Hora</label>
-                    <input type="time" id="hora">
-                </div>
-                <div class="form-group">
-                    <label>Descrição</label>
-                    <input type="text" id="descricao">
-                </div>
-                <button id="adicionar">Adicionar Marcação</button>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Próximas Marcações</h2>
-            <div class="appointments" id="lista-marcacoes">
-                <div class="appointment-card">
-                    <h4>Ana Silva</h4>
-                    <p>💇 Corte de Cabelo</p>
-                    <p>📅 10/08/2025 - 15:00</p>
-                </div>
-                <div class="appointment-card">
-                    <h4>Maria Costa</h4>
-                    <p>🎨 Coloração</p>
-                    <p>📅 10/08/2025 - 16:30</p>
-                </div>
-            </div>
-        </section>
+    <div class="login-container">
+        <h2>Login - Mónica Miranda</h2>
+        <div id="errorMsg" class="error-message">Por favor, preencha todos os campos.</div>
+        <form id="loginForm" onsubmit="return false;">
+            <label for="username">Utilizador</label>
+            <input type="text" id="username" placeholder="O teu utilizador" autocomplete="username" />
+            
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="password" placeholder="A tua palavra-passe" autocomplete="current-password" />
+            
+            <button type="submit" id="loginBtn">Entrar</button>
+        </form>
     </div>
 
-    <script src="/JavaScript/script.js"></script>
+    <script src="/JavaScript/Script_Login.js"></script>
 </body>
 </html>

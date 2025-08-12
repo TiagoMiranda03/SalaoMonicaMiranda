@@ -21,7 +21,7 @@ loginBTN.addEventListener('click', async() =>{
         const data = await res.json();
         if (res.ok) {
             // Login bem sucedido - redireciona para a página principal
-            window.location.href = 'index.html';
+            window.location.href = 'marcacao.html';
         } else {
             // Mostrar mensagem de erro vinda do backend
             errorMsg.style.display = 'block';
