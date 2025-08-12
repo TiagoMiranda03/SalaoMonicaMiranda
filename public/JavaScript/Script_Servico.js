@@ -110,12 +110,18 @@ form.addEventListener('submit', async (e) => {
 
     if (!response.ok) throw new Error('Erro ao adicionar serviço');
 
-    const novoServico = await response.json();
+    // Em vez de await response.json(), vamos garantir que o corpo é texto e tentar interpretar:
+    const text = await response.text();
+    let novoServico;
+    try {
+      novoServico = JSON.parse(text);
+    } catch {
+      // Se falhar o parse, criamos um objeto básico (pode ajustar conforme necessário)
+      novoServico = { nome: name, preco: price };
+    }
 
     // Atualiza a lista adicionando o novo serviço
-    const card = document.createElement('div');
-    card.classList.add('appointment-card');
-    card.innerHTML = `<h4>${novoServico.nome}</h4><p>Preço: ${novoServico.preco.toFixed(2)}€</p>`;
+    const card = criarCardServico(novoServico);
     servicesList.appendChild(card);
 
     form.reset();
