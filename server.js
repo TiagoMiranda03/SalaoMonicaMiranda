@@ -1,18 +1,43 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+const {Pool} = require('pg');
+require('dotenv').config();
+
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.json());
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false}
+});
+
+const authRoutes = require('./routes/auth');
+app.use ('/api', authRoutes)
 
 // Serve os ficheiros estáticos (frontend)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Para qualquer pedido que não seja API, serve o index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('/api/teste', async(req, res) =>{
+  try{
+    const result = await pool.query('SELECT NOW()');
+    res.json({ horaServidor: result.rows[0].now });
+  }
+  catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+app.get('*',(req, res) => {
+  res.sendFile(path.join(__dirname,'public', 'login.html'))
 });
 
 // Inicia o servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor a correr na porta ${PORT}`);
 });
+
+
