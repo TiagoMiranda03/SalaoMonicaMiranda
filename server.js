@@ -14,6 +14,12 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false}
 });
 
+const servicosRoutes = require('./routes/servicosRoutes');
+app.use('/api', servicosRoutes);
+
+const marcacoesRoutes = require('./routes/marcacoesRoutes');
+app.use('/api', marcacoesRoutes);
+
 const authRoutes = require('./routes/auth');
 app.use ('/api', authRoutes)
 
@@ -31,7 +37,7 @@ app.get('/api/teste', async(req, res) =>{
 });
 
 app.get('*',(req, res) => {
-  res.sendFile(path.join(__dirname,'public', 'login.html'))
+  res.sendFile(path.join(__dirname,'public', 'index.html'))
 });
 
 // Inicia o servidor
