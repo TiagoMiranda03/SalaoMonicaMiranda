@@ -47,7 +47,10 @@ function renderCalendar(date) {
         dayDiv.textContent = day;
 
         const fullDate = new Date(year, month, day);
-        const dateStr = fullDate.toISOString().split('T')[0];
+        const dateStr = fullDate.getFullYear() + '-' + 
+                String(fullDate.getMonth()+1).padStart(2,'0') + '-' + 
+                String(fullDate.getDate()).padStart(2,'0');
+
         dayDiv.dataset.date = dateStr;
 
         dayDiv.addEventListener('click', () => openModal(dateStr));
@@ -145,13 +148,21 @@ nextMonthBtn.addEventListener('click', () => {
 
 // Marcar os dias com marcações
 function marcarDiasNoCalendario(marcacoes) {
-    const diasComMarcacoes = marcacoes.map(m => m.data.split('T')[0]);
+    const diasComMarcacoes = marcacoes.map(m => formatDateLocal(m.data));
     document.querySelectorAll('.day').forEach(diaEl => {
         const dataDia = diaEl.getAttribute('data-date');
         if (diasComMarcacoes.includes(dataDia)) {
             diaEl.classList.add('dia-com-marcacao');
         }
     });
+}
+
+function formatDateLocal(dateStr) {
+    const d = new Date(dateStr);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 // Inicializa
