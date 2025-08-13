@@ -11,11 +11,11 @@ const pool = new Pool({
 router.get('/marcacoes', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT m.id, m.nome_cliente, s.nome AS servico_nome, m.data, m.hora
-        FROM marcacoes m
-        JOIN servicos s ON m.servico_id = s.id
-        WHERE (m.data > CURRENT_DATE) OR (m.data = CURRENT_DATE AND m.hora >= CURRENT_TIME)
-        ORDER BY m.data, m.hora
+      SELECT m.id, m.nome_cliente, s.nome AS servico_nome, m.data, 
+      m.hora, m.descricao 
+      FROM marcacoes m JOIN servicos s ON m.servico_id = s.id
+      WHERE (m.data > CURRENT_DATE) OR (m.data = CURRENT_DATE AND m.hora >= CURRENT_TIME) 
+      ORDER BY m.data, m.hora
     `);
     res.json(result.rows);
   } catch (err) {
@@ -51,5 +51,26 @@ router.post('/marcacoes', async(req,res) =>{
         res.status(500).json({ error: 'Erro ao criar marcação' });
     }
 });
+
+//Apagar Marcação
+router.delete('/marcacoes/:id', async(req,res) =>{
+  const id = req.params.id; 
+
+  try{
+    const result = await pool.query('DELETE FROM marcacoes WHERE id=$1', [id]);
+    console.log("Result rowCount:", result.rowCount);
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Marcação não encontrada' });
+    }
+    res.status(204).end();
+  }catch(err){
+    console.error('Erro ao apagar a marcação:', err);
+    res.status(500).json({ error: 'Erro no servidor' });
+  }
+});
+
+
+//Editar Marcação
+
 
 module.exports = router;
