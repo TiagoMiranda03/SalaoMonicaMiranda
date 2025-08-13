@@ -12,7 +12,7 @@ let todasMarcacoes = []; // Guardar todas as marcações carregadas
 // Função para buscar todas as marcações e marcar os dias no calendário
 async function carregarMarcacoesEMarcarDias() {
     try {
-        const res = await fetch('/api/marcacoes');
+        const res = await fetch('/api/marcacoes/todas');
         if (!res.ok) throw new Error('Erro ao buscar marcações');
         todasMarcacoes = await res.json();
         marcarDiasNoCalendario(todasMarcacoes);
@@ -63,7 +63,7 @@ async function openModal(dateStr) {
     modal.style.display = 'flex'; // ou 'block', depende do CSS que já tens
 
     try {
-        const res = await fetch('/api/marcacoes');
+        const res = await fetch('/api/marcacoes/todas');
         if (!res.ok) throw new Error('Erro ao carregar marcações');
         const marcacoes = await res.json();
 

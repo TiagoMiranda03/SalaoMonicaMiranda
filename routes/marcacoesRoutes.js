@@ -7,7 +7,7 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } 
 });
 
-//Ler marcações
+//Ler marcações futuras 
 router.get('/marcacoes', async (req, res) => {
   try {
     const result = await pool.query(`
@@ -24,6 +24,21 @@ router.get('/marcacoes', async (req, res) => {
   }
 });
 
+// Ler todas as marcações (histórico)
+router.get('/marcacoes/todas', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT m.id, m.nome_cliente, s.nome AS servico_nome, m.data, m.hora, m.descricao
+      FROM marcacoes m
+      JOIN servicos s ON m.servico_id = s.id
+      ORDER BY m.data DESC, m.hora DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Erro ao buscar todas as marcações:', err);
+    res.status(500).json({ error: 'Erro ao buscar todas as marcações' });
+  }
+});
 
 //criar nova marcação
 router.post('/marcacoes', async(req,res) =>{
